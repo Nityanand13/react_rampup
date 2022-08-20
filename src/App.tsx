@@ -2,19 +2,17 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import LoginPage from './component/forms/login'
 import './App.css';
-
-let name: number= 65;
+import store from "./store";
+import { Provider } from "react-redux";
 
 function App() {
-  const [count, setCount]=useState(0)
-
-  // useEffect(()=>{
-
-  // });
-
+  console.log("66666666666666");
+  
   return (
    <div>
+    <Provider store={store}>
     <LoginPage />
+    </Provider>
    </div>
   );
 }
