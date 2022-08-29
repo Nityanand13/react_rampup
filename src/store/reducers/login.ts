@@ -1,41 +1,51 @@
-const initialState:InitialState = {
-    token:localStorage.getItem('token'),
-    userLoggedIn:!!localStorage.getItem('token'),
+export const initialState:InitialLoginState = {
+    token:null,
+    userLoggedIn:false,
     userLoggingIn:false,
-    userName:'',
-    userId:'',
-    recoverMsg:'',
-    loginError:'',
-    signupError:'',
-    recoverError:''
+    error:'',
+    userData:null
 }
 
 export const userReducer = (state = initialState, action:GenericAction) =>{
-    state= Object.assign({},state)
+    // state= Object.assign({},state)
     switch(action.type){
         
         case "LOGIN_REQUEST":
-            return {state,userLoggingIn:true,loginError:'',signupError:'',recoverError:''};
-        case "LOGIN_SUCCESS":
-            localStorage.setItem('token',action.payload.token);
             return {
-                state,
+                ...state,
+                userLoggingIn:true
+            };
+        case "LOGIN_SUCCESS":
+            console.log("SuccessSuccessSuccessSuccess555");
+            console.log(
+                JSON.stringify({token:action.payload.token,
+                userLoggedIn:true,
+                userLoggingIn:false,
+                error:'',
+                userData:action.payload.userData})
+            );
+            
+            // localStorage.setItem('token',action.payload.token);
+            return {
+                // purani state ki feild automatic aa jati h
+                ...state,
                 token:action.payload.token,
                 userLoggedIn:true,
                 userLoggingIn:false,
-                loginError:'',
-                signupError:'',
-                recoverError:''
+                error:'',
+                userData:action.payload.userData
             }
         case "LOGIN_ERROR":
+            
             localStorage.removeItem('token');
             return {
-                state,
+                ...state,
                 token:null,
+                userLoggedIn:false,
                 userLoggingIn:false,
-                loginError:action.payload,
-                recoverError:'',
-                signupError:''
+                error:action.payload,
+                userData:null
+                // make userData as object
             }
         default:
             return state;

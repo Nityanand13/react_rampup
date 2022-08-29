@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-import { Dispatch } from 'redux';
-
 
 
 
@@ -14,28 +12,32 @@ export const incNumber = () =>{
 export const decNumber = () =>({type: "DECREMENT"})
 
 export const loginRequest = () => ({type:"LOGIN_REQUEST"});
-export const loginError = (err: any) => ({type:"LOGIN_ERROR",payload:err});
-export const loginSuccess = (userData: any) => ({type:"LOGIN_SUCCESS",payload:userData});
+export const loginError = (err: string) => ({type:"LOGIN_ERROR",payload:err});
+export const loginSuccess = (userData: Record<string, string>,token: string) => ({type:"LOGIN_SUCCESS",payload:{userData,token}});
 
 export const loginUser = (personalAccessToked: string,username: string) => {
+    console.log("gg");
     
-    const config = {
-      headers: { Authorization: `Bearer ${personalAccessToked}` }
-    };
     return (dispatch: DispatchType) => {
-        console.log("AAAAAAAAAA");
-        
         dispatch(loginRequest());
+        const config = { headers: { Authorization: `Bearer ${personalAccessToked}`}};
+        if(personalAccessToked===""||username===""){
+            return
+        }
         axios.get('https://api.github.com/user',config)
         .then(response => {
-            const userData = response.data;
-            if(userData.errorMsg)
-                dispatch(loginError(userData.errorMsg));
-            else
-                dispatch(loginSuccess(userData));
+            const userData = response.data
+            if(username !== userData.login) {
+                dispatch(loginError('Either username or personal Access Token is wrong'));
+            }
+            else {
+                console.log("Hi");
+                console.log("userData ",userData.login);
+                dispatch(loginSuccess(userData,personalAccessToked));
+            }
         })
         .catch(err => {
-            dispatch(loginError('Something went wrong'));
+            dispatch(loginError('Either username or personal Access Token is wrong'));
         });
     }
 }

@@ -8,18 +8,14 @@ type GenericAction = {
 // Action dispatch type ek function h jo ek argument accept krega jiska type GenericAction hai aure return bhi GenericAction yhi krega
 type DispatchType = (args: GenericAction) => GenericAction;
 
-type InitialState = {
-    token: string|null;
-    userLoggedIn: boolean;
-    userLoggingIn: boolean;
-    userName: string;
-    userId: string;
-    recoverMsg: string;
-    loginError: string;
-    signupError: string;
-    recoverError: string;
+type InitialLoginState = {
+  token:string|null,
+  userLoggedIn:boolean,
+  userLoggingIn:boolean,
+  error:string,
+  userData:Record<string, string>|null
 }
 
 type GlobalState = {
-    user: InitialState
+    user: InitialLoginState
 }

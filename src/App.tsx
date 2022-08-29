@@ -1,17 +1,23 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import LoginPage from './component/forms/login'
+import {LoginPage,HomePage} from './component/forms/login'
 import './App.css';
-import store from "./store";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import store,{persistor} from "./store";
 import { Provider } from "react-redux";
+import AppRoutes from "./routes"
+// delays the response jbtk hmara state vo local storage me save naa ho jaye aur vaha se retrieve naa ho jaye
+import { PersistGate } from 'redux-persist/integration/react';
 
 function App() {
   console.log("66666666666666");
   
   return (
-   <div>
+   <div className='App'>
     <Provider store={store}>
-    <LoginPage />
+    <PersistGate persistor={persistor}>
+      <AppRoutes/>
+    </PersistGate>
     </Provider>
    </div>
   );
