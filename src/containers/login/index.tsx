@@ -28,19 +28,33 @@ export const LoginPage = () => {
 
   useEffect(()=>{
     if(error !== ''){
-      setvalidateUserData(true)
+      setvalidateUserData(true);
+      setUsernameMissing(false);
+      setPersonalAccessTokenMissing(false);
     }
   },[error])
 
   function login() {
+    if(username===''&&personalAccessToked===''){
+      setUsernameMissing(true);
+      setPersonalAccessTokenMissing(true);
+      setvalidateUserData(false);
+      return;
+    }
     if(username===''){
       setUsernameMissing(true);
+      setPersonalAccessTokenMissing(false);
+      setvalidateUserData(false);
+      return;
     }
     if(personalAccessToked===''){
+      setUsernameMissing(false);
       setPersonalAccessTokenMissing(true);
+      setvalidateUserData(false);
+      return;
     }
     if(username===''||personalAccessToked===''){
-      return
+      return;
     }
     dispatch(loginUser(personalAccessToked,username));
   }
