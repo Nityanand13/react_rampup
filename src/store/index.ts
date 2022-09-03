@@ -26,7 +26,6 @@ const persistConfig={
 
 const persistedReducer = persistReducer(persistConfig,rootReducer)
 
-// thunk se hm ek saath kayi saare ek series me action dispatch kr skte h
 const store: StoreType= createStore(
     persistedReducer,
     composeWithDevTools(applyMiddleware(thunk))
