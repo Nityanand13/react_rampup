@@ -16,18 +16,7 @@ export const userReducer = (state = initialState, action:GenericAction) =>{
                 userLoggingIn:true
             };
         case "LOGIN_SUCCESS":
-            console.log("SuccessSuccessSuccessSuccess555");
-            console.log(
-                JSON.stringify({token:action.payload.token,
-                userLoggedIn:true,
-                userLoggingIn:false,
-                error:'',
-                userData:action.payload.userData})
-            );
-            
-            // localStorage.setItem('token',action.payload.token);
             return {
-                // purani state ki feild automatic aa jati h
                 ...state,
                 token:action.payload.token,
                 userLoggedIn:true,
@@ -45,7 +34,6 @@ export const userReducer = (state = initialState, action:GenericAction) =>{
                 userLoggingIn:false,
                 error:action.payload,
                 userData:null
-                // make userData as object
             }
         default:
             return state;

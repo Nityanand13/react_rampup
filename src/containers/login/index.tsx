@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from '../../store/index';
 import {loginUser} from "../../store/actions/login";
 import { useNavigate } from "react-router-dom";
 import profile from "..//../component/image/undraw_login_re_4vu2.svg";
+
 import './style.scss';
 
 
@@ -27,12 +28,12 @@ export const LoginPage = () => {
   },[userLoggedIn,navigate])
 
   useEffect(()=>{
-    if(error !== ''){
+    if(error !== ''&&loading==true){
       setvalidateUserData(true);
       setUsernameMissing(false);
       setPersonalAccessTokenMissing(false);
     }
-  },[error])
+  },[error,loading])
 
   function login() {
     if(username===''&&personalAccessToked===''){
@@ -77,15 +78,15 @@ export const LoginPage = () => {
         </div>
         <div className="right">
           <div className="first-input">
-            <input value={username} onChange={(e) => setUsername(e.target.value)} type="text" placeholder="username" className="name"/>
+            <input className="input-feild name" value={username} onChange={(e) => setUsername(e.target.value)} type="text" placeholder="username" />
           </div>
           {usernameMissing &&  <p className='errors'>Please enter your username</p>}
           <div className="second-input">
-            <input value={personalAccessToked} onChange={(e) => setPersonalAccessToked(e.target.value)} type="password" placeholder="personalAccessToked" className="name"/>
+            <input className="input-feild name" value={personalAccessToked} onChange={(e) => setPersonalAccessToked(e.target.value)} type="password" placeholder="personalAccessToked" />
             {personalAccessTokenMissing &&  <p className='errors'>Please enter your personal Access Token</p>}
             {validateUserData &&  <p className='errors'>{error}</p>}
           </div>
-          <div className="login-button">
+          <div className="login-div">
           {userLoggedIn ? (
             <Spinner
               style = {{ marginBottom: 27 }}
@@ -93,7 +94,7 @@ export const LoginPage = () => {
               variant = "danger"
             />
           ) : null}
-            <button onClick={()=>{
+            <button className='login-button' onClick={()=>{
               setLoader()
             }} disabled={loading} >
               {loading && (

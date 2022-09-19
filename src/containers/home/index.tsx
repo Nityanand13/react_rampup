@@ -1,8 +1,7 @@
-import './style.scss';
 export const HomePage = () => {
-    return(
+  return(
       <div>
-        <h3>Hello</h3>
-      </div>
+        <h3>Home Page</h3>
+      </div> 
     )
 }
