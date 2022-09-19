@@ -16,7 +16,7 @@ export const Navbar = () => {
   const navigate = useNavigate();
   useEffect(()=>{
   if(searchedValue.length!=0){
-    navigate("/search");
+    navigate("/search/"+searchedValue);
   }
  },[searchedValue,navigate])
 
