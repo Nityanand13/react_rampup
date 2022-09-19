@@ -29,8 +29,8 @@ export const SearchPage = () => {
         <div>
             <div className='info'>
                 {users?.items?.map((res:any, index:any) => 
-                <> <div className='item'> <img key={index} src={res.avatar_url} /> 
-                <p key={index}>{res.login}</p> </div> </> )}
+                <> <div className='item'>  <img src={res.avatar_url} />
+                <p>{res.login}</p> </div> </> )}
             </div>
             <div className="paginate">
                 <ReactPaginate
