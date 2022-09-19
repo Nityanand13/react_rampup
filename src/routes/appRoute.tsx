@@ -1,6 +1,6 @@
 import { Route } from "react-router-dom";
-
 import PrivateRoute from "./privateRoute"
+import { Navbar } from "../component/navbar"
 
 type AppRouteProps = {
     component: JSX.Element;
@@ -10,7 +10,8 @@ const AppRoute = ({
     component,
     isPrivate
 }: AppRouteProps):JSX.Element => (
-    isPrivate ? <PrivateRoute component={component} /> : component
+    
+    isPrivate ? <><Navbar/> <PrivateRoute component={component} /> </>: component
 )
 
 
