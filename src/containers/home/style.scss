@@ -40,4 +40,52 @@ nav {
       box-shadow: none;
     }
 }
-  
+.image {
+	img {
+		margin-top: 80px;
+		height: 400px;
+		margin-left: 100px;
+	}
+}
+.follow {
+	display: flex;
+}
+.whoToFollow {
+	margin-top: 50px;
+	margin-left: 100px;
+}
+.users {
+	display: flex;
+	margin-top: 35px;
+	img {
+		height: 60px;
+		border-radius: 50%;
+	}
+	p {
+		margin-left: 12px;
+		margin-top: 12px;
+	}
+	.follow-button {
+		width: 86px;
+		height: 31px;
+		margin-left: 100px;
+		margin-top: 12px;
+		color: white;
+		background-color: #003865;
+	}
+	.close-button {
+		margin-top: 15px;
+		margin-left: 5px;
+	}
+}
+.refresh {
+	width: 80px;
+	height: 35px;
+	margin-left: 10px;
+	background-color: white;
+	color: #003865;
+  border: none;
+}
+.whoToFollow-refresh {
+	display: flex;
+}
