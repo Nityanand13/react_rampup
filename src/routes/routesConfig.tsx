@@ -1,6 +1,7 @@
 import { LoginPage } from '../containers/login'
 import { HomePage } from '../containers/home'
 import { SearchPage } from '../containers/search'
+import { ProfilePage } from '../containers/profile'
 const routesConfig: RouteConfig[] = [
     {
         path: '/',
@@ -10,6 +11,11 @@ const routesConfig: RouteConfig[] = [
     {
         path: '/search/:searchId',
         component: <SearchPage />,
+        private: true,
+    },
+    {
+        path: '/profile/:profileId',
+        component: <ProfilePage />,
         private: true,
     },
     {

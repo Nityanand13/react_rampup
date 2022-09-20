@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import axios from 'axios';
@@ -8,7 +8,7 @@ export const SearchPage = () => {
     const [users,setUsers] = useState<any>();
     const { searchId } = useParams();
     const [currentPage, setCurrentPage] = useState(0);
-    var pageCount;
+    const PER_PAGE = 10;
     const fetchData = async() =>{
         const response = await axios.get('https://api.github.com/search/users?per_page=10&page='+(currentPage+1)+'&q='+searchId)
         setUsers(response.data);
@@ -19,24 +19,20 @@ export const SearchPage = () => {
 
     function handlePageClick({selected} : {selected:number}) {
         setCurrentPage(selected)
-        setUsers(undefined)
     }
-    if (users!=undefined){
-        pageCount = users.total_count;
-    }
-
+    const pageCount = Math.ceil(users?.total_count/PER_PAGE); 
     return(
         <div>
             <div className='info'>
                 {users?.items?.map((res:any, index:any) => 
-                <> <div className='item'> <img key={index} src={res.avatar_url} /> 
-                <p key={index}>{res.login}</p> </div> </> )}
+                <> <div className='item'> <Link to={"/profile/"+res.login}><img src={res.avatar_url} /> </Link> 
+                <p>{res.login}</p> </div> </> )}
             </div>
             <div className="paginate">
                 <ReactPaginate
                 previousLabel = {"<- Previous"}
                 nextLabel = {"Next ->"}
-                pageCount = {pageCount}
+                pageCount = {pageCount===undefined?0:pageCount}
                 onPageChange = {handlePageClick}
                 containerClassName = {"pagination"}
                 previousLinkClassName = {"pagination__link"}
