@@ -7,7 +7,7 @@ import {loginUser} from "../../store/actions/login";
 import { useNavigate } from "react-router-dom";
 import profile from "..//../component/image/undraw_login_re_4vu2.svg";
 
-import './style.scss';
+import '..//../styles/sass/main.scss'
 
 
 

@@ -13,5 +13,4 @@ const AppRoute = ({
     isPrivate ? <PrivateRoute component={component} /> : component
 )
 
-
-export default AppRoute
+export default AppRoute;
