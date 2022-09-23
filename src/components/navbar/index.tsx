@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
+import React from "react";
 import { useSelector, useDispatch } from '../../store/index'; 
 import Button from 'react-bootstrap/Button';
 import Overlay from 'react-bootstrap/Overlay';
 import Tooltip from 'react-bootstrap/Tooltip';
-import profile from "../../component/image/107161_circle_github_icon.png";
-import './style.scss';
+import profile from "../image/107161_circle_github_icon.png";
+import '../../styles/sass/main.scss'
 import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {

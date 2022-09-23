@@ -1,5 +1,6 @@
 import { LoginPage } from '../containers/login'
 import { HomePage } from '../containers/home'
+import React from "react";
 const routesConfig: RouteConfig[] = [
     {
         path: '/',
@@ -12,4 +13,5 @@ const routesConfig: RouteConfig[] = [
         private: false,
     },
 ]
-export default routesConfig
+
+export default routesConfig;
