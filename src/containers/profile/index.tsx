@@ -13,6 +13,7 @@ import Popover from 'react-bootstrap/Popover'
 import Button from 'react-bootstrap/Button';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
+import '../../styles/sass/main.scss'
 
 export const ProfilePage = () => {
     const {token, userData} = useSelector((state) => state.user)

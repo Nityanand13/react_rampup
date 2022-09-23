@@ -1,11 +1,10 @@
-import { useEffect, useState, useRef } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import { useSelector, useDispatch } from '../../store/index'; 
-import './style.scss';
+import React from "react";
+
+// TODO: Add Home page UI
 export const HomePage = () => {
   return(
-    <div>
-     
-    </div>
-  )
+      <div>
+        <h3>Home Page</h3>
+      </div> 
+    )
 }

@@ -24,4 +24,5 @@ const routesConfig: RouteConfig[] = [
         private: false,
     },
 ]
-export default routesConfig
+
+export default routesConfig;
