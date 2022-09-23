@@ -1,6 +1,8 @@
 import { LoginPage } from '../containers/login'
 import { HomePage } from '../containers/home'
 import { SearchPage } from '../containers/search'
+import React, { Component }  from 'react';
+
 const routesConfig: RouteConfig[] = [
     {
         path: '/',
@@ -18,4 +20,5 @@ const routesConfig: RouteConfig[] = [
         private: false,
     },
 ]
-export default routesConfig
+
+export default routesConfig;

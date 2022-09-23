@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
+import React, { Component }  from 'react';
+
 import axios from 'axios';
 import './style.scss';
 
@@ -8,7 +10,7 @@ export const SearchPage = () => {
     const [users,setUsers] = useState<any>();
     const { searchId } = useParams();
     const [currentPage, setCurrentPage] = useState(0);
-    var pageCount;
+    let pageCount;
     const fetchData = async() =>{
         const response = await axios.get('https://api.github.com/search/users?per_page=10&page='+(currentPage+1)+'&q='+searchId)
         setUsers(response.data);

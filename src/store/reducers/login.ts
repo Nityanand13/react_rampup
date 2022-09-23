@@ -1,4 +1,6 @@
-export const initialState:InitialLoginState = {
+import * as Constants from '../../constants/constants'
+
+const initialState:InitialLoginState = {
     token:null,
     userLoggedIn:false,
     userLoggingIn:false,
@@ -7,28 +9,21 @@ export const initialState:InitialLoginState = {
 }
 
 export const userReducer = (state = initialState, action:GenericAction) =>{
-    // state= Object.assign({},state)
     switch(action.type){
-        
-        case "LOGIN_REQUEST":
+        case Constants.LOGIN_REQUEST:
             return {
-                ...state,
                 userLoggingIn:true
             };
-        case "LOGIN_SUCCESS":
+        case Constants.LOGIN_SUCCESS:
             return {
-                ...state,
                 token:action.payload.token,
                 userLoggedIn:true,
                 userLoggingIn:false,
                 error:'',
                 userData:action.payload.userData
             }
-        case "LOGIN_ERROR":
-            
-            localStorage.removeItem('token');
+        case Constants.LOGIN_ERROR:
             return {
-                ...state,
                 token:null,
                 userLoggedIn:false,
                 userLoggingIn:false,
