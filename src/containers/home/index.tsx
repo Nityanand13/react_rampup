@@ -1,3 +1,4 @@
+// TODO: Add Home page UI
 export const HomePage = () => {
   return(
       <div>

@@ -1,21 +1,18 @@
-import 'font-awesome/css/font-awesome.min.css';
-
 import React, { useEffect, useState } from 'react';
 import { Spinner } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
 import { useSelector, useDispatch } from '../../store/index'; 
 import {loginUser} from "../../store/actions/login";
-import { useNavigate } from "react-router-dom";
-import profile from "..//../component/image/undraw_login_re_4vu2.svg";
-
-import '..//../styles/sass/main.scss'
-
-
+import profile from "../../components/image/undraw_login_re_4vu2.svg";
+import * as Constants from '../../constants/constants'
+import '../../styles/sass/main.scss'
 
 export const LoginPage = () => {
   const {error,userLoggedIn} = useSelector((state) => state.user)
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [username, setUsername] = useState("");
-  const [personalAccessToked, setPersonalAccessToked] = useState("");
+  const [personalAccessToken, setPersonalAccessToken] = useState("");
   const [usernameMissing, setUsernameMissing] = useState(false);
   const [personalAccessTokenMissing, setPersonalAccessTokenMissing] = useState(false);
   const [validateUserData, setvalidateUserData] = useState(false);
@@ -36,39 +33,19 @@ export const LoginPage = () => {
   },[error,loading])
 
   function login() {
-    if(username===''&&personalAccessToked===''){
-      setUsernameMissing(true);
-      setPersonalAccessTokenMissing(true);
+    setUsernameMissing(!username);
+    setPersonalAccessTokenMissing(!personalAccessToken);
+    if (!username || !personalAccessToken) {
       setvalidateUserData(false);
       return;
     }
-    if(username===''){
-      setUsernameMissing(true);
-      setPersonalAccessTokenMissing(false);
-      setvalidateUserData(false);
-      return;
-    }
-    if(personalAccessToked===''){
-      setUsernameMissing(false);
-      setPersonalAccessTokenMissing(true);
-      setvalidateUserData(false);
-      return;
-    }
-    if(username===''||personalAccessToked===''){
-      return;
-    }
-    dispatch(loginUser(personalAccessToked,username));
+    dispatch(loginUser(personalAccessToken,username));
   }
   function setLoader(){
-      setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
       login()
-    }, 100);
   };
 
   return(
-    <div>
       <div className="login">
         <div className="sub-login">
         <div className="imgs">
@@ -80,10 +57,10 @@ export const LoginPage = () => {
           <div className="first-input">
             <input className="input-feild name" value={username} onChange={(e) => setUsername(e.target.value)} type="text" placeholder="username" />
           </div>
-          {usernameMissing &&  <p className='errors'>Please enter your username</p>}
+          {usernameMissing &&  <p className='errors'>{Constants.EnterUserName}</p>}
           <div className="second-input">
-            <input className="input-feild name" value={personalAccessToked} onChange={(e) => setPersonalAccessToked(e.target.value)} type="password" placeholder="personalAccessToked" />
-            {personalAccessTokenMissing &&  <p className='errors'>Please enter your personal Access Token</p>}
+            <input className="input-feild name" value={personalAccessToken} onChange={(e) => setPersonalAccessToken(e.target.value)} type="password" placeholder="Personal Access Token" />
+            {personalAccessTokenMissing &&  <p className='errors'>{Constants.EnterPersonalAccessToken}</p>}
             {validateUserData &&  <p className='errors'>{error}</p>}
           </div>
           <div className="login-div">
@@ -109,7 +86,6 @@ export const LoginPage = () => {
           </div>
         </div>
       </div>
-    </div>
     </div>
   )
 }
