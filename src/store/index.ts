@@ -35,4 +35,3 @@ export const useDispatch = () => reduxUseDispatch<TypedDispatch>();
 export const useSelector: TypedUseSelectorHook<GlobalState> = reduxUseSelector;
 
 export default store;
-

@@ -2,10 +2,10 @@ import { useEffect, useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { useSelector, useDispatch } from '../../store/index'; 
 import CloseButton from 'react-bootstrap/CloseButton';
-import './style.scss';
 import axios from 'axios';
-import image from "../../component/image/undraw_login_re_4vu2.svg";
+import image from "../../components/image/undraw_login_re_4vu2.svg";
 import { Link } from 'react-router-dom';
+import '../../styles/sass/main.scss'
 
 export const HomePage = () => {
   const {token} = useSelector((state) => state.user)
@@ -15,7 +15,7 @@ export const HomePage = () => {
   const [userIndex,setUserIndex] = useState(0);
   const fetchUsers = async() =>{
     setUserIndex(0);
-    const response = await axios.get('https://api.github.com/search/users?per_page=60&page='+pageNumber+'&q=followers:>1000')
+    const response = await axios.get('https://api.github.com/search/users?per_page=7&page='+pageNumber+'&q=followers:>1000')
     setUsers(response.data);
   }
 
@@ -44,7 +44,10 @@ export const HomePage = () => {
       var statusCode = await isFollowingUser(users?.items[i].login)
       setUserIndex(i);
       if(statusCode==404) {
-        if(userToDisplay.length!=4) {
+        console.log("HYii");
+        
+        if(userToDisplay.length<4) {
+          console.log("Oooooooo");
           userToDisplay.push(users?.items[i])
           setUserToDisplay(userToDisplay)
         }

@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import { Route } from "react-router-dom";
+
 import { useSelector } from '../store';
 
 type PrivateRouteProps = {
@@ -21,4 +23,4 @@ const PrivateRoute = ({
     return component;
 }
 
-export default PrivateRoute
+export default PrivateRoute;

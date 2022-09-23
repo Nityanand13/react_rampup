@@ -1,18 +1,11 @@
-import './style.scss';
-import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.css';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.css';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import ReactPaginate from 'react-paginate';
-import profile from "..//../component/image/PngItem_1280311.png";
 import { useSelector, useDispatch } from '../../store/index'; 
 import { useEffect, useState } from 'react';
-import Popover from 'react-bootstrap/Popover'
-import Button from 'react-bootstrap/Button';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
+import '../../styles/sass/main.scss'
 
 export const ProfilePage = () => {
     const {token, userData} = useSelector((state) => state.user)
