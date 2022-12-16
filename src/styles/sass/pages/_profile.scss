@@ -1,0 +1,61 @@
+.profile-section-pic {
+    border-radius: 50%;
+    height: 300px;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+.profile-section {
+    display: flex;
+}
+
+.profile-section-bio {
+    width: 30%;
+}
+
+.profile-section-bio h3{
+    margin-left: 80px;
+    margin-top: 10px;
+}
+
+.profile-section-name {
+    margin-left: 80px;
+    margin-top: -10px;
+    color: grey;
+}
+.profile-section-follows {
+    margin-left: 80px;
+    margin-top: 10px;
+}
+.profile-section button {
+    display: block;
+    width: 250px;
+    height: 36px;
+    margin-left: 80px;
+    color: white;
+    background-color: #003865;
+}
+
+.location{
+    margin-left: 42px;
+}
+
+.profile-section-followers h3 {
+    margin-left: 42px;
+}
+
+@keyframes spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+.loading-spinner {
+	width: 50px;
+	height: 50px;
+	border: 10px solid #f3f3f3;
+	border-top: 10px solid #383636;
+	border-radius: 50%;
+	animation: spinner 1.5s linear infinite;
+}
